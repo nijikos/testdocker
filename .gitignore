@@ -33,3 +33,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vscode/settings.json
+platter.config.js
+
+# Temporaty Files
+/src/keeps
