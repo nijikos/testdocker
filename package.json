@@ -10,9 +10,9 @@
     "docker:build:site1": "docker build --build-arg NEXT_PUBLIC_CONFIG=site1 -t myapp-site1 .",
     "docker:build:site2": "docker build --build-arg NEXT_PUBLIC_CONFIG=site2 -t myapp-site2 .",
     "docker:build:site3": "docker build --build-arg NEXT_PUBLIC_CONFIG=site3 -t myapp-site3 .",
-    "docker:run:site1": "docker run -p 3001 myapp-site1",
-    "docker:run:site2": "docker run -p 3002 myapp-site2",
-    "docker:run:site3": "docker run -p 3003 myapp-site3",
+    "docker:run:site1": "docker run -p 3001:3000 myapp-site1",
+    "docker:run:site2": "docker run -p 3002:3000 myapp-site2",
+    "docker:run:site3": "docker run -p 3003:3000 myapp-site3",
     "docker:run:all:bg": "docker run -d -p 3001:3000 --name site1 myapp-site1 && docker run -d -p 3002:3000 --name site2 myapp-site2 && docker run -d -p 3003:3000 --name site3 myapp-site3",
     "docker:stop:all": "docker stop site1 site2 site3 && docker rm site1 site2 site3",
     "docker:build:all": "npm run docker:build:site1 && npm run docker:build:site2 && npm run docker:build:site3"
