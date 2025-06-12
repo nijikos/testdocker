@@ -34,7 +34,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: your-dockerhub-username/myapp-site1:latest
+          tags: nijiko/myapp-site1:latest
           build-args: |
             NEXT_PUBLIC_CONFIG=site1
 
@@ -43,7 +43,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: your-dockerhub-username/myapp-site2:latest
+          tags: nijiko/myapp-site2:latest
           build-args: |
             NEXT_PUBLIC_CONFIG=site2
 
@@ -52,6 +52,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: your-dockerhub-username/myapp-site3:latest
+          tags: nijiko/myapp-site3:latest
           build-args: |
             NEXT_PUBLIC_CONFIG=site3
