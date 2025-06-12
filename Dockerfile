@@ -6,9 +6,9 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copy package files
-COPY package.json package-lock.json* ./
-RUN npm ci --only=production
+# Copy package files for Yarn
+COPY package.json yarn.lock* ./
+RUN yarn install --frozen-lockfile --production
 
 # Rebuild the source code only when needed
 FROM base AS builder
@@ -20,14 +20,14 @@ COPY . .
 ARG NEXT_PUBLIC_CONFIG
 ENV NEXT_PUBLIC_CONFIG=${NEXT_PUBLIC_CONFIG}
 
-# Build the application
-RUN npm run build
+# Build the application with Yarn
+RUN yarn build
 
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -40,7 +40,7 @@ USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
 
 CMD ["node", "server.js"]
